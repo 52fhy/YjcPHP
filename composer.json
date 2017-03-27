@@ -1,0 +1,14 @@
+{
+    "require": {
+        "monolog/monolog": "1.2.*",
+		"illuminate/database": "*"
+    },
+    "config": {
+        "secure-http": false
+    },
+    "autoload": {
+        "psr-4": {
+            "Yjc\\Sms\\":"vendor/yjc/sms/src"
+        }
+    }
+}
