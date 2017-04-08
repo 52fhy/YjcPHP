@@ -153,7 +153,7 @@ class Dispatch
     }
 
     private static function getDecorator(){
-        $return_type = App::getConfig()['config']['return_type'];
+        $return_type = strtolower(App::getConfig()['config']['return_type']);
         switch($return_type){
             case 'json':
                 $decorator = 'YJC\\Decorator\\Json';break;
@@ -161,6 +161,8 @@ class Dispatch
                 $decorator = 'YJC\\Decorator\\Xml';break;
             case 'html':
                 $decorator = 'YJC\\Decorator\\Template';break;
+            default:
+                $decorator = 'YJC\\Decorator\\'.ucfirst($return_type);break;
         }
         return new $decorator();
     }
