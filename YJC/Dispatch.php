@@ -71,7 +71,8 @@ class Dispatch
             $log_msg = array();
             $log_msg['code'] = $e->getCode();
             $log_msg['TraceAsString'] = var_export($e, true);
-            Logger::writeExceptionLog($log_msg);
+//            Logger::writeExceptionLog($log_msg);
+            Log::error(json_encode($log_msg));
         }catch(\Exception $e){
             $result['code'] = $e->getCode();
             $result['msg'] = $e->getMessage();
@@ -88,7 +89,8 @@ class Dispatch
         $end_time = microtime(true);
         $run_time = round(($end_time - $begin_time) * 1000, 2);
         $msg = $_SERVER['REQUEST_URI']  . "---" . $post_data . "---" . $response . "---" . $run_time;
-        Logger::writeBizAccessLog($msg);
+//        Logger::writeBizAccessLog($msg);
+        Log::info($msg);
 
         exit;
     }

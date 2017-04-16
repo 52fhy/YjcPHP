@@ -14,6 +14,10 @@ use Hprose\Future;
 class HproseClient extends Base
 {
 
+    /**
+     * 异步调用
+     * https://github.com/hprose/hprose-php/wiki/05.-Hprose-%E5%AE%A2%E6%88%B7%E7%AB%AF
+     */
     public function index(){
         $client = Client::create('http://yjc_fw.cn/index.php/HproseServer');
         $var_dump = Future\wrap('print_r');
@@ -23,7 +27,7 @@ class HproseClient extends Base
 
     public function index2(){
         $client = Client::create('http://yjc_fw.cn/index.php/HproseServer');
-        $client->test1('yjc2')->then(function($result) {
+        $client->test1('yjc2')->then(function($result) {//异步调用
             var_dump($result);
         });
     }
@@ -31,7 +35,7 @@ class HproseClient extends Base
     public function sum(){
         $client = Client::create('http://yjc_fw.cn/index.php/HproseServer');
         $sum = $client->sum;
-        $var_dump = Future\wrap('var_dump');
+        $var_dump = Future\wrap('var_dump');//异步调用
 
         $r1 = $sum(1, 3, 5, 7, 9);
         $r2 = $sum(2, 4, 6, 8, 10);

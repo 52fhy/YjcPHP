@@ -1,15 +1,18 @@
 {
     "require": {
-        "monolog/monolog": "1.2.*",
 		"illuminate/database": "*",
-        "hprose/hprose": ">=2.0.0"
+        "hprose/hprose": ">=2.0.0",
+        "firebase/php-jwt": "^4.0",
+        "monolog/monolog": "^1.22",
+        "overtrue/wechat": "~3.1"
     },
     "config": {
         "secure-http": false
     },
     "autoload": {
         "psr-4": {
-            "Yjc\\Sms\\":"vendor/yjc/sms/src"
+            "Yjc\\Sms\\":"vendor/yjc/sms/src",
+            "Yjc\\Helper\\":"vendor/yjc/helper/src"
         }
     }
 }

@@ -19,3 +19,6 @@ require_once BASE_PATH. '/third_party/eloquent.php';
 require_once BASE_PATH. '/third_party/swoole.php';
 
 spl_autoload_register('\\YJC\\Loader::autoload');
+
+//init Logger
+\YJC\Loader::initializeLogger();

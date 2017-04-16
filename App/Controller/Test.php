@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use Yjc\Helper\Amap;
 use YJC\Picture;
 
 class Test extends Base
@@ -20,5 +21,10 @@ class Test extends Base
         $pic->sharp();
         $pic->show();
 //        $pic->save_picture(STATIC_PATH .  '/test2.jpg');
+    }
+
+    public function t(){
+        $res = Amap::gertRoadTraffic();
+        dump($res);
     }
 }

@@ -9,9 +9,14 @@
 return array(
     'url_type' => 1, //0 普通模式 http://localhost/?c=user&a=login&var=value
                       //1 PATHINFO http://localhost/index.php/user/login/var/value/
-    'return_type' => 'hprose', //html,json,hprose
-    'decorator' => array(
+    'return_type' => 'json', //html,json,hprose
+    'decorator' => [
         //'App\Decorator\Template',
         //'App\Decorator\Json',
-    ),
+    ],
+    'log' => [
+        'file' => BASE_PATH . '/logs/'.date('Ymd').'_access.log',
+        'level' => 'debug',
+        'handler' => '',
+    ]
 );
