@@ -17,7 +17,7 @@ class Loader
 {
     public static function autoload($class){
         if (false !== strpos($class, '\\')) {
-            $file = str_replace(BASE_PATH . '\\', '/', trim($class, '\\')) . '.php';
+            $file = str_replace('\\', '/', BASE_PATH .'\\'.trim($class, '\\')) . '.php';
             if(file_exists($file)){
                 require_once $file;
             }else{

@@ -9,11 +9,12 @@ namespace Yjc\Helper;
 
 
 use YJC\Http;
+use Yjc\Log;
 
 class Amap
 {
 
-    const KEY = '';
+    const KEY = 'a7defc69917a0d20f9d387bbf83e3bc9';
 
     //日志文件名
     const LOG_NORMAL = 'Amap';
@@ -106,7 +107,7 @@ class Amap
         $body = $http->request($url, $method, $data)->getBody();
 
 
-        $res = json_encode(json_decode($body, true));
+        $res = $body->__toString();
 
         $msg = urldecode($url) . '---' . json_encode($data) . '---'. $res;
         self::log($msg);
@@ -120,13 +121,15 @@ class Amap
      */
     public static function log($message, $filename = self::LOG_NORMAL){
 
+        return Log::info($message);
+
         self::$_info['end']  =  microtime(TRUE);
         $runtime = number_format(self::$_info['end'] - self::$_info['start'], 4);
 
         $time=date("y-m/d");
 
         if(defined('APP_PATH')){
-            $path = APP_PATH."Logs/http/{$time}";
+            $path = APP_PATH."/Logs/http/{$time}";
         }elseif (defined('LOGS_PATH')){
             $path = LOGS_PATH."/http/{$time}";
         }else{

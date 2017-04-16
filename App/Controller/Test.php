@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use Yjc\Helper\Amap;
+use Yjc\Log;
 use YJC\Picture;
 
 class Test extends Base
@@ -26,5 +27,6 @@ class Test extends Base
     public function t(){
         $res = Amap::gertRoadTraffic();
         dump($res);
+        Log::info('jjjj');
     }
 }
