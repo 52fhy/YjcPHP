@@ -14,7 +14,7 @@ use Yjc\Log;
 class Amap
 {
 
-    const KEY = 'a7defc69917a0d20f9d387bbf83e3bc9';
+    const KEY = '*';
 
     //日志文件名
     const LOG_NORMAL = 'Amap';
