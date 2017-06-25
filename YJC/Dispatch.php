@@ -9,37 +9,24 @@
 namespace YJC;
 
 
-class Dispatch
+class Dispatch extends App
 {
-    protected static $ins;
-
     const URL_TYPE_NORMAL = 0;
     const URL_TYPE_PATHINFO = 1;
     const URL_TYPE_CLI = 2;
 
-    public static function getInstance(){
-        if(!self::$ins){
-            self::$ins = new self;
-        }
-
-        return self::$ins;
-    }
-
     /**
      * 路由分配
      */
-    public static function run(){
+    public function runMvc(){
 
         $post_data = file_get_contents("php://input");
 
         $begin_time = microtime(true);
 
-        //decorator
-        $decorator = self::getDecorator();
-
         try{
 
-            list($controller, $action) = self::parseRoute();
+            list($controller, $action) = $this->parseRoute();
 
             $controller = ucwords($controller);
             define('CONTROLLER_NAME', $controller);
@@ -48,8 +35,6 @@ class Dispatch
             $class = APP_NAME .'\\Controller\\' . $controller;
 
             $obj = new $class();
-
-            $decorator->beforeRequest($obj);
 
             //统一接收json数据
             if (method_exists($obj, 'setPostData')) {
@@ -83,7 +68,7 @@ class Dispatch
             Logger::writeExceptionLog($log_msg);
         }
 
-        $response = $decorator->afterRequest($result);
+        $response = $this->output($result);
 
         //访问日志记录
         $end_time = microtime(true);
@@ -99,7 +84,7 @@ class Dispatch
      * 路由解析
      * @return array
      */
-    private static function parseRoute(){
+    private function parseRoute(){
         //路由类型
         $url_type = App::getConfig()['config']['url_type'];
         switch($url_type){
@@ -152,20 +137,5 @@ class Dispatch
         }
 
         return array($controller, $action);
-    }
-
-    private static function getDecorator(){
-        $return_type = strtolower(App::getConfig()['config']['return_type']);
-        switch($return_type){
-            case 'json':
-                $decorator = 'YJC\\Decorator\\Json';break;
-            case 'xml':
-                $decorator = 'YJC\\Decorator\\Xml';break;
-            case 'html':
-                $decorator = 'YJC\\Decorator\\Template';break;
-            default:
-                $decorator = 'YJC\\Decorator\\'.ucfirst($return_type);break;
-        }
-        return new $decorator();
     }
 }

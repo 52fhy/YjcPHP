@@ -1,41 +1,43 @@
 <?php
-
-namespace YJC\Decorator;
-
 /**
  * Created by PhpStorm.
  * User: YJC
- * Date: 2016/6/11 011
- * Time: 14:41
+ * Date: 2017/6/24 024
+ * Time: 16:49
  */
-class Template
-{
-    protected $controller;
 
-    public function beforeRequest($obj){
-        $this->controller = $obj;
+namespace YJC\Decorator;
+
+
+use YJC\IResponse;
+
+class Template extends Decorator
+{
+
+    private $reponse;
+
+    public function __construct(IResponse $response)
+    {
+        $this->reponse = $response;
+        parent::__construct($response);
     }
 
-    public function afterRequest($return_value){
-
-        if(!is_object($this->controller)){
-            exit($return_value['msg']);
-        }
-
-        $data = $return_value['data'];
+    public function output($data)
+    {
+        $data = $data['data'];
         if(empty($data)){
             return;
         }
 
         if(is_array($data)){
             foreach($data as $k=> $v){
-                $this->controller->assign($k, $v);
+                $this->reponse->assign($k, $v);
             }
         }else{
-            $this->controller->assign('data', $data);
+            $this->reponse->assign('data', $data);
         }
 
-        $this->controller->display();
+        $this->reponse->display();
     }
 
 }

@@ -14,5 +14,5 @@ define('STATIC_PATH', BASE_PATH .'/Common/static');
 
 require_once BASE_PATH. '/autoload.php';
 
-\YJC\Dispatch::getInstance()->run();
+(new \YJC\Dispatch())->runMvc();
 

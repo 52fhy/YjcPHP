@@ -8,7 +8,7 @@ namespace YJC;
  * Date: 2016/6/11 011
  * Time: 11:59
  */
-class App extends Application
+class App extends Application implements IResponse
 {
     protected $view_data;
     protected static $ins;
@@ -57,5 +57,15 @@ class App extends Application
 
         extract($this->view_data);
         include $file;
+    }
+
+    /**
+     * @param $data
+     */
+    public function output($data)
+    {
+        $return_type = strtolower(App::getConfig()['config']['return_type']);
+        $decorator = 'YJC\\Decorator\\'.ucfirst($return_type);
+        return (new $decorator($this))->output($data);
     }
 }

@@ -1,24 +1,23 @@
 <?php
-
-namespace YJC\Decorator;
-
 /**
  * Created by PhpStorm.
  * User: YJC
- * Date: 2016/6/11 011
- * Time: 14:41
+ * Date: 2017/6/24 024
+ * Time: 16:27
  */
-class Json
+
+namespace YJC\Decorator;
+
+
+use YJC\IResponse;
+
+class Json extends Decorator
 {
-    protected $controller;
+    public function output($data)
+    {
+        header('Content-type: application/json');
 
-    public function beforeRequest($obj){
-        $this->controller = $obj;
-    }
-
-    public function afterRequest($return_value){
-
-        $response =  str_replace('null', '""', json_encode($return_value));
+        $response =  str_replace('null', '""', json_encode($data));
 
         //支持jsonp
         if (isset($_GET['callback'])) {

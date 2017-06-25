@@ -9,7 +9,7 @@
 return array(
     'url_type' => 1, //0 普通模式 http://localhost/?c=user&a=login&var=value
                       //1 PATHINFO http://localhost/index.php/user/login/var/value/
-    'return_type' => 'json', //html,json,hprose
+    'return_type' => 'json', //template,json,xml,hprose
     'decorator' => [
         //'App\Decorator\Template',
         //'App\Decorator\Json',
