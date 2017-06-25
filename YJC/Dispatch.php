@@ -86,7 +86,7 @@ class Dispatch extends App
      */
     private function parseRoute(){
         //路由类型
-        $url_type = App::getConfig()['config']['url_type'];
+        $url_type = config('config.url_type');
         switch($url_type){
             case self::URL_TYPE_NORMAL:
                 if(isset($_GET['c']) && isset($_GET['a'])){

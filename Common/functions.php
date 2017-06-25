@@ -156,3 +156,22 @@ function model($name, $type = 'master'){
 function M($name, $type = 'master'){
     return call_user_func('model', $name. 'Model', $type);
 }
+
+function get_app(){
+    return \YJC\App::getInstance();
+}
+
+/**
+ * 配置获取
+ * @param $key
+ * @return mixed
+ */
+function config($key){
+    $config = \YJC\App::getConfig();
+    if(strpos($key, '.') !== false){
+        $keys = explode('.', $key);
+        return $config[$keys[0]][$keys[1]];
+    }else{
+        return $config[$key];
+    }
+}
