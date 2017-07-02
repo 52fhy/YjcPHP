@@ -12,6 +12,7 @@ namespace App\Controller;
 use Yjc\Helper\Amap;
 use Yjc\Log;
 use YJC\Picture;
+use YJC\SingleLinkList;
 
 class Test extends Base
 {
@@ -25,8 +26,17 @@ class Test extends Base
     }
 
     public function t(){
-        $res = Amap::gertRoadTraffic();
-        dump($res);
-        Log::info('jjjj');
+        $head = new SingleLinkList();
+
+        $head->add($head, new SingleLinkList('1', 'test'));
+        $head->add($head, new SingleLinkList('5', 'test5'));
+        $head->add($head, new SingleLinkList('2', 'test2'));
+        $head->showList($head);
+
+        $head->del($head, '53');
+
+        $head->update($head, new SingleLinkList('2', 'jjjjj'));
+        print_r($head);
+        $head->showList($head);
     }
 }

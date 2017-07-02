@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Model\TestModel;
+use App\Model\UserModel;
 use Swoole\Client\WebSocket;
 
 use YJC\Factory;
@@ -31,8 +32,10 @@ class Index extends Base
         //dump($this->param_data);
 
         //$user_model = Factory::getModel('UserModel');
-        $user_model = M('User');
-        $data =  $user_model->select('*', array('age[=] ' => 20));
+//        $user_model = M('User');
+//        $data =  $user_model->select('*', array('age[=] ' => 20));
+
+        $data = TestModel::find(1);
 
 //        $this->assign('list', $data);
 //        $this->display();

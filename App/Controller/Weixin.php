@@ -27,8 +27,8 @@ class Weixin extends Base
             "price"  => "39.8元",
             "remark" => "欢迎再次购买！",
         );
-        $result = $notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
-        var_dump($result);
+        //$result = $notice->uses($templateId)->withUrl($url)->andData($data)->andReceiver($userId)->send();
+        //var_dump($result);
     }
 
 }
