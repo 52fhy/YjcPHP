@@ -68,16 +68,13 @@ class Dispatch extends App
             Logger::writeExceptionLog($log_msg);
         }
 
-        $response = $this->output($result);
+        $this->output($result);
 
         //访问日志记录
         $end_time = microtime(true);
         $run_time = round(($end_time - $begin_time) * 1000, 2);
-        $msg = $_SERVER['REQUEST_URI']  . "---" . $post_data . "---" . $response . "---" . $run_time;
-//        Logger::writeBizAccessLog($msg);
+        $msg = $_SERVER['REQUEST_URI']  . "---" . $post_data . "---" . $run_time;
         Log::info($msg);
-
-        exit;
     }
 
     /**

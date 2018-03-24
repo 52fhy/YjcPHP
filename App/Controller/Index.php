@@ -35,7 +35,12 @@ class Index extends Base
 //        $user_model = M('User');
 //        $data =  $user_model->select('*', array('age[=] ' => 20));
 
-        $data = TestModel::find(1);
+        $data = [
+            'name' => 'yjcphp',
+            'ver' => '0.1'
+        ];
+
+        // $data = TestModel::find(1);
 
 //        $this->assign('list', $data);
 //        $this->display();
@@ -48,7 +53,7 @@ class Index extends Base
 
     public function verify(){
         $Verify = new \YJC\Think\Verify();
-        $Verify->entry();
+        return $Verify->entry();
     }
 
     public function s(){

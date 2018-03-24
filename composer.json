@@ -4,7 +4,8 @@
         "hprose/hprose": ">=2.0.0",
         "firebase/php-jwt": "^4.0",
         "monolog/monolog": "^1.22",
-        "overtrue/wechat": "~3.1"
+        "overtrue/wechat": "~3.1",
+        "pda/pheanstalk": "^3.1"
     },
     "config": {
         "secure-http": false

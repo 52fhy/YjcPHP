@@ -15,7 +15,6 @@ class Xml extends Decorator
     {
         header('Content-type: application/xml');
         echo $response = $this->xml_encode($data);
-        return $response;
     }
 
     /**

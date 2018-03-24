@@ -64,8 +64,8 @@ class App extends Application implements IResponse
      */
     public function output($data)
     {
-        $return_type = strtolower(App::getConfig()['config']['return_type']);
+        $return_type = strtolower(isset($_GET['output']) ? $_GET['output'] : App::getConfig()['config']['output_type']);
         $decorator = 'YJC\\Decorator\\'.ucfirst($return_type);
-        return (new $decorator($this))->output($data);
+        (new $decorator($this))->output($data);
     }
 }

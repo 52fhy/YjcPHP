@@ -1,6 +1,0 @@
-[2017-04-15 18:57:08] log.WARNING: Foo [] []
-[2017-04-15 18:57:08] log.ERROR: Bar [] []
-[2017-04-15 18:57:39] log.WARNING: /------{"code":0,"msg":"\u6210\u529f","data":[{"id":"1","name":"allen","gender":"1","age":"20","flag":"1"},{"id":"5","name":"eve","gender":"2","age":"20","flag":"1"}]}---1028.06 [] []
-[2017-04-15 18:57:39] log.ERROR: /------{"code":0,"msg":"\u6210\u529f","data":[{"id":"1","name":"allen","gender":"1","age":"20","flag":"1"},{"id":"5","name":"eve","gender":"2","age":"20","flag":"1"}]}---1028.06 [] []
-[2017-04-15 18:57:57] log.WARNING: /------{"code":0,"msg":"\u6210\u529f","data":[{"id":"1","name":"allen","gender":"1","age":"20","flag":"1"},{"id":"5","name":"eve","gender":"2","age":"20","flag":"1"}]}---1015.06 [] []
-[2017-04-15 18:57:57] log.ERROR: /------{"code":0,"msg":"\u6210\u529f","data":[{"id":"1","name":"allen","gender":"1","age":"20","flag":"1"},{"id":"5","name":"eve","gender":"2","age":"20","flag":"1"}]}---1015.06 [] []

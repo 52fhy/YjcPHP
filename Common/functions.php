@@ -100,7 +100,7 @@ function showJsonInfo($data)
     );
 
     echo json_encode($data);
-    exit;
+    // exit;
 }
 
 /**

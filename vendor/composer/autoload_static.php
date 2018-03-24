@@ -34,6 +34,7 @@ class ComposerStaticInite2ddd202364a1fd756aa7e2db8e1611c
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
+            'Pheanstalk\\' => 11,
         ),
         'O' => 
         array (
@@ -106,6 +107,10 @@ class ComposerStaticInite2ddd202364a1fd756aa7e2db8e1611c
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Pheanstalk\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pda/pheanstalk/src',
         ),
         'Overtrue\\Socialite\\' => 
         array (
