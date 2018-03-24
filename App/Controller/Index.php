@@ -37,7 +37,6 @@ class Index extends Base
 
         $data = [
             'name' => 'yjcphp',
-            'ver' => '0.1'
         ];
 
         // $data = TestModel::find(1);
@@ -47,22 +46,12 @@ class Index extends Base
         return $data;
     }
 
-    public function test(){
+    public function test_model(){
         return TestModel::find(1);
     }
 
     public function verify(){
         $Verify = new \YJC\Think\Verify();
         return $Verify->entry();
-    }
-
-    public function s(){
-        return new WebSocket('127.0.0.1', 90);
-    }
-
-    public function sms(){
-
-        $sms = new \Yjc\Sms\Ucpaas('token', 'appid', 'accountsid');
-        $sms->send('13482827633', 'temp_id');
     }
 }

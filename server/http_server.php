@@ -17,9 +17,10 @@ class HttpServer
 		$http->set(
 			array(
 				'worker_num' => 10,
-				'daemonize' => 0,
+				'daemonize' => true,
 	            'max_request' => 10000,
-	            'dispatch_mode' => 1
+				'dispatch_mode' => 1,
+				'log_file' => '../logs/swoole.log',
 			)
         );
         
@@ -67,22 +68,12 @@ class HttpServer
 					$_FILES[ $key ] = $value;
 				}
 			}
-            /*
-			$uri = explode( "?", $_SERVER['REQUEST_URI'] );
-			$_SERVER["PATH_INFO"] = $uri[0];
-			if( isset( $uri[1] ) ) {
-				$_SERVER['QUERY_STRING'] = $uri[1];
-			}*/
-            $_SERVER["PATH_INFO"] = explode('/', $_SERVER["PATH_INFO"],3)[2];
-            $_SERVER['argv'][1]=$_SERVER["PATH_INFO"];
 
 			ob_start();
-
             (new \YJC\Dispatch())->runMvc();
-
 		    $result = ob_get_contents();
-
-		  	ob_end_clean();
+			ob_end_clean();
+			  
 		  	$response->end($result);
 		});
 
