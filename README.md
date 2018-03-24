@@ -51,4 +51,6 @@ http://127.0.0.1:9051/Index/index
 http://127.0.0.1:9051/Index/index?output=xml
 ```
 
-注意代码里不能用`exit`。使用`return`代替。
+注意代码里不能用`exit`。使用`return`代替。  
+
+http_server.php 参考：https://github.com/LinkedDestiny/swoole-thinkphp
